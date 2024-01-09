@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('log').addEventListener('click', function () {
+                validateForm();
+            });
+        });
+
+        function validateForm() {
+            var username = document.getElementById('Uname').value;
+            var password = document.getElementById('Pass').value;
+
+            // Validate username as email format
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(username)) {
+                alert('Invalid email address');
+                return;
+            }
+
+            // Validate password format
+            var passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@])[A-Za-z\d@]+$/;
+            if (!passwordRegex.test(password)) {
+                alert('Invalid password format. Password must contain an uppercase letter, a number, and @.');
+                return;
+            }
+
+            // Check if the entered password is 'SmartServTest@123'
+            if (password === 'SmartServTest@123') {
+                // Redirect to the dashboard page
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Incorrect password');
+            }
+        }
+    </script>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Add any additional styles here */
+        body {
+            text-align: center;
+        }
+
+        .login {
+            margin-top: 90px;
+            padding: 65px;
+            border: 3px solid #ccc;
+            width: 280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <img src="13.jpg" alt="Your Image Alt Text" style="width: 200%; max-width: 400px; margin-top: 40px;">
+    <h2></h2><br>
+    <div class="login">
+        <form id="login" method="get" action="login.php">
+            <label><b></b></label>
+            <input type="text" name="Uname" id="Uname" placeholder="Username">
+            <br><br>
+            <label><b></b></label>
+            <input type="password" name="Pass" id="Pass" placeholder="Password">
+            <br><br>
+            <input type="button" name="log" id="log" value="Login">
+            <br><br>
+            <input type="checkbox" id="check">
+            <br><br>
+            <a href="#">Forgot your Password?</a>
+        </form>
+    </div>
+</body>
+</html>
